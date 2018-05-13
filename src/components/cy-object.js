@@ -5,6 +5,8 @@ let cy = null
 
 export default {
   reset () {
+    console.log('antes reset', cy)
+    console.log('resetado')
     cy = null
   },
   get instance () {

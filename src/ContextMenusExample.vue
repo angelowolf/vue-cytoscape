@@ -1,6 +1,8 @@
 <template>
   <div id="holder">
     <cytoscape :key="'cyKey()'" :config="config" :preConfig="preConfig" :afterCreated="afterCreated"/>
+    <button @click="reset">reset?</button>
+    <button @click="add">add</button>
   </div>
 </template>
 
@@ -21,6 +23,33 @@ export default {
     }
   },
   methods: {
+    reset () {
+      const that = this
+      // CyObj.reset()
+      CyObj.instance.then(cy => {
+        console.log('cy', cy)
+        cy.on('tap', event => {
+          console.log('tapped')
+          that.i++
+        })
+      })
+      console.log('computing cyKey cy' + this.i)
+      CyObj.instance.then(cy => {
+        console.log(cy.elements().jsons())
+      })
+    },
+    add () {
+      const that = this
+      CyObj.instance.then(cy => {
+        console.log(cy.add(
+            {
+              group: "nodes",
+              data: { weight: 75 },
+              position: { x: 200, y: 200 }
+            }
+          ))
+      })
+    },
     preConfig (cytoscape) {
       console.log('calling pre-config')
       contextMenus(cytoscape, jquery)

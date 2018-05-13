@@ -6,6 +6,17 @@ export default {
       data: { id: 'b' }
     }, { // edge ab
       data: { id: 'ab', source: 'a', target: 'b' }
+    },
+    {
+      data: { id: 'red1' },
+      classes: 'red'
+    },
+    {
+      data: {
+        id: 12,
+        source: 'b',
+        target: 'red1'
+      }
     }
   ],
   style: [
@@ -14,6 +25,12 @@ export default {
       style: {
         'background-color': '#666',
         'label': 'data(id)'
+      }
+    },
+    {
+      selector: '.red',
+      style: {
+        'background-image': 'https://farm8.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg'
       }
     }, {
       selector: 'edge',
@@ -28,5 +45,6 @@ export default {
   layout: {
     name: 'grid',
     rows: 1
-  }
+  },
+  zoom: 1
 }
